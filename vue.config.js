@@ -24,6 +24,10 @@ let pageConfig = {
     chunks: ['chunk-vendors', 'chunk-common', 'energy']
   }
 };
+// 打包环境修改输出文件：index.html;
+if (process.env.NODE_ENV !== 'development') {
+  pageConfig[process.env.VUE_APP_FLAG].filename = 'index.html';
+}
 pageConfig = process.env.NODE_ENV === 'development' ? pageConfig : Object.assign({}, { index: pageConfig[process.env.VUE_APP_FLAG] });
 module.exports = {
   publicPath: './',
